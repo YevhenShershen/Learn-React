@@ -1,5 +1,5 @@
 //npm start
-import { Component } from "react";
+import { Component, StrictMode } from "react";
 import "./App.css";
 // создание элементарного компонента Header
 const Header = () => {
@@ -24,7 +24,10 @@ function Btn() {
 function App() {
   return (
     <div className="App">
-      <Header />
+{/*StrictMode:  https://ru.reactjs.org/docs/strict-mode.html */}
+      <StrictMode>
+        <Header />
+      </StrictMode>
       <Field />
       <Btn />
     </div>
