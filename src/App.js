@@ -1,16 +1,24 @@
 //npm start
-
+import { Component } from "react";
 import "./App.css";
 // создание элементарного компонента Header
 const Header = () => {
   return <h2>Elementary component</h2>;
 };
-const Field = () => {
-  return <input placeholder="Type here" type="text" />;
-};
+//создание компонента с использованием синтексиса "класса"
+class Field extends Component {
+  render() {
+    const holder = "Enter here";
+    const styledField = {
+      width: "300px",
+    };
+    return <input placeholder={holder} type="text" style={styledField} />;
+  }
+}
 function Btn() {
-  const text = 'Log in'
-const logged = true;
+  const text = "Log in";
+  const logged = true;
+  //Conditional (ternary) operator
   return <button>{logged ? "Enter" : text}</button>;
 }
 function App() {
