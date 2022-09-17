@@ -1,12 +1,12 @@
 import "./employers-list-item.css";
-const Employerslistitem = () => {
+const Employerslistitem = ({ name, salary }) => {
   return (
     <li className="list-group-item d-flex justify-content-between">
-      <span className="list-group-item-label">John Smith</span>
+      <span className="list-group-item-label">{name}</span>
       <input
         type="text"
         className="list-group-item-input"
-        defaultValue="1000$"
+        defaultValue={salary + "$"}
       />
       <div className="d-flex justify-content-center align-items-center">
         <button type="button" className="btn-cookie btn-sm">
