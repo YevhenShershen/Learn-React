@@ -6,9 +6,9 @@ import Employerslist from "../employers-list/employers-list";
 import Employersaddform from "../employers-add-form/employers-add-form";
 function App() {
   const data = [
-    { name: "John C.", salary: 800 },
-    { name: "Alex M.", salary: 1300 },
-    { name: "Carl P.", salary: 13300 },
+    { name: "John C.", salary: 800, increase: true },
+    { name: "Alex M.", salary: 1300, increase: false },
+    { name: "Carl P.", salary: 13300, increase: true },
   ];
   return (
     <div className="app">
