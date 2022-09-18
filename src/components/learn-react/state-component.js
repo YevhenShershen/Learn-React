@@ -9,6 +9,7 @@ class StateComponent extends Component {
     this.state = {
       years: 27,
       text: "+++",
+      position: "",
     };
   }
   //использовать только стрелочную функцию
@@ -20,8 +21,14 @@ class StateComponent extends Component {
       years: state.years + 1,
     }));
   };
+  commitInputChanges = (e) => {
+    this.setState({
+      position: e.target.value,
+    });
+  };
   render() {
     const { name, surname, link } = this.props;
+    const { position, years } = this.state;
     return (
       <div>
         {/* метод который находится внутри класса - this.nextYear */}
@@ -29,9 +36,14 @@ class StateComponent extends Component {
           {this.state.text}
         </button>
         <h1>
-          My name is {name}, surnmae - {surname}, age - {this.state.years}
+          My name is {name}, surnmae - {surname}, age - {years}, position -{" "}
+          {position}
         </h1>
         <a href={link}>My profile</a>
+        <form>
+          <span>Введи должность</span>
+          <input type="text" onChange={this.commitInputChanges} />
+        </form>
       </div>
     );
   }
