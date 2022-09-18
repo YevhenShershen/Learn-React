@@ -1,7 +1,7 @@
 import Employerslistitem from "../employers-list-item/employers-list-item";
 import "./employers-list.css";
 const Employerslist = ({ data }) => {
-  const elements = data.map((item, index) => {
+  const elements = data.map(item => {
     //Используем синтаксис частичной диструктуризации
     //const {id, ...itemProps} = item;  вытаскиваем отдельно пропс id с объекта и
     // остальные свойсва (пропсы) которые у нас остались мы их объеденяем в одной
@@ -9,7 +9,7 @@ const Employerslist = ({ data }) => {
     const { id, ...itemProps } = item;
     //<Employerslistitem name={item.name} salary={item.salary} /> равняется спрей оператору <Employerslistitem {...item} />
     //спрей оператор разворачивает наш объект
-    return <Employerslistitem key={index} {...itemProps} />;
+    return <Employerslistitem key={id} {...itemProps} />;
   });
   return <ul className="app-list list-group">{elements}</ul>;
 };
