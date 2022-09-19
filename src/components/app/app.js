@@ -18,7 +18,7 @@ function App() {
         <SearchPanel />
         <AppFilter />
       </div>
-      <Employerslist data={data} />
+      <Employerslist data={data} onDelete={(id) => console.log(id)} />
       <Employersaddform />
       <StateComponent name="Olex" surname="Kewals" link="Google" />
       <StateComponent name="Olex2" surname="Kewals2" link="Google2" />
@@ -27,4 +27,3 @@ function App() {
 }
 export default App;
 //render() метод рендер отвечает за вывод чего то на страницу
-
