@@ -1,6 +1,6 @@
 import Employerslistitem from "../employers-list-item/employers-list-item";
 import "./employers-list.css";
-const Employerslist = ({ data, onDelete }) => {
+const Employerslist = ({ data, onDelete, onToggleIncrease, onToggleRice }) => {
   const elements = data.map((item) => {
     //Используем синтаксис частичной диструктуризации
     //const {id, ...itemProps} = item;  вытаскиваем отдельно пропс id с объекта и
@@ -14,6 +14,8 @@ const Employerslist = ({ data, onDelete }) => {
         key={id}
         {...itemProps}
         onDelete={() => onDelete(id)}
+        onToggleIncrease={()=> onToggleIncrease(id)}
+        onToggleRice={()=> onToggleRice(id)}
       />
     );
   });
