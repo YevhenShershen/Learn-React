@@ -5,8 +5,7 @@ const Employerslistitem = (props) => {
     name,
     salary,
     onDelete,
-    onToggleIncrease,
-    onToggleRice,
+    onToggleProp,
     increase,
     rise,
   } = props;
@@ -19,7 +18,7 @@ const Employerslistitem = (props) => {
   }
   return (
     <li className={classNames}>
-      <span className="list-group-item-label" onClick={onToggleRice}>
+      <span className="list-group-item-label" onClick={onToggleProp} data-toggle="rise">
         {name}
       </span>
       <input
@@ -31,7 +30,8 @@ const Employerslistitem = (props) => {
         <button
           type="button"
           className="btn-cookie btn-sm"
-          onClick={onToggleIncrease}
+          onClick={onToggleProp}
+          data-toggle="increase"
         >
           <i className="fas fa-cookie"></i>
         </button>

@@ -1,6 +1,6 @@
 import Employerslistitem from "../employers-list-item/employers-list-item";
 import "./employers-list.css";
-const Employerslist = ({ data, onDelete, onToggleIncrease, onToggleRice }) => {
+const Employerslist = ({ data, onDelete, onToggleProp}) => {
   const elements = data.map((item) => {
     //Используем синтаксис частичной диструктуризации
     //const {id, ...itemProps} = item;  вытаскиваем отдельно пропс id с объекта и
@@ -14,8 +14,9 @@ const Employerslist = ({ data, onDelete, onToggleIncrease, onToggleRice }) => {
         key={id}
         {...itemProps}
         onDelete={() => onDelete(id)}
-        onToggleIncrease={()=> onToggleIncrease(id)}
-        onToggleRice={()=> onToggleRice(id)}
+        // e.currentTarget -Определяет элемент, в котором в данный момент обрабатывается событие, при движении события внутри DOM
+        // .getAttribute('data-toggle') - получение значения атрибута 'data-toggle' который находится в плике employers-list-item.js
+        onToggleProp={(e)=> onToggleProp(id, e.currentTarget.getAttribute('data-toggle'))}
       />
     );
   });
