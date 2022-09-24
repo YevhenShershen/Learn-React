@@ -15,6 +15,7 @@ class App extends Component {
         { name: "Alex M.", salary: 1300, increase: false, rise: false, id: 2 },
         { name: "Carl P.", salary: 13300, increase: true, rise: false, id: 3 },
       ],
+      term: "",
     };
     this.maxId = 4;
   }
@@ -31,19 +32,19 @@ class App extends Component {
   //add item from form
   addItem = (name, salary) => {
     const newItem = {
-        name,
-        salary,
-        increase: false,
-        id: this.maxId++
-    }
-    this.setState(({data}) => {
-        const newArr = [...data, newItem];
-        return {
-            data: newArr
-        }
+      name,
+      salary,
+      increase: false,
+      id: this.maxId++,
+    };
+    this.setState(({ data }) => {
+      const newArr = [...data, newItem];
+      return {
+        data: newArr,
+      };
     });
-}
-  onToggleProp = (id,prop) => {
+  };
+  onToggleProp = (id, prop) => {
     this.setState(({ data }) => ({
       data: data.map((item) => {
         if (item.id === id) {
@@ -51,23 +52,35 @@ class App extends Component {
         }
         return item;
       }),
-    }))
+    }));
+  };
+  searchEmp = (items, term) => {
+    if (term.length === 0) {
+      return items;
+    }
+    return items.filter((item) => {
+      return item.name.toUpperCase().indexOf(term.toUpperCase()) > -1;
+    });
+  };
+  onUpdateSerach = (term) => {
+    this.setState({ term: term });
   };
   render() {
+    const { data, term } = this.state;
     const employees = this.state.data.length;
     const increased = this.state.data.filter((item) => item.increase).length;
+    const visibleDate = this.searchEmp(data, term);
     return (
       <div className="app">
         <AppInfo employees={employees} increased={increased} />
         <div className="search-panel">
-          <SearchPanel />
+          <SearchPanel onUpdateSerach={this.onUpdateSerach} />
           <AppFilter />
         </div>
         <Employerslist
-          data={this.state.data}
+          data={visibleDate}
           onDelete={this.deleteItem}
           onToggleProp={this.onToggleProp}
-
         />
         <Employersaddform onAdd={this.addItem} />
         {/* <StateComponent name="Olex" surname="Kewals" link="Google" />
