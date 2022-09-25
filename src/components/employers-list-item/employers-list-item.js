@@ -15,6 +15,8 @@ const Employerslistitem = (props) => {
         className="list-group-item-label"
         onClick={onToggleProp}
         data-toggle="rise"
+        //так же можно передавать перменные в инлайн стили
+        style={{ fontSize: "40px", color: "red" }}
       >
         {name}
       </span>
