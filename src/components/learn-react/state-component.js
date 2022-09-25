@@ -1,5 +1,5 @@
 import { Component } from "react";
-
+import styled from "styled-components";
 class StateComponent extends Component {
   constructor(props) {
     //что бы использовать пропсы в нашем стеите мы вызываем в super пропсы
@@ -29,8 +29,12 @@ class StateComponent extends Component {
   render() {
     const { name, surname, link } = this.props;
     const { position, years } = this.state;
+    const Wrapper = styled.div`
+      width: 600px;
+      margin: 80px auto 0 auto;
+    `;
     return (
-      <div>
+      <Wrapper>
         {/* метод который находится внутри класса - this.nextYear */}
         <button className="btn btn-primary" onClick={this.nextYear}>
           {this.state.text}
@@ -44,7 +48,7 @@ class StateComponent extends Component {
           <span>Введи должность</span>
           <input type="text" onChange={this.commitInputChanges} />
         </form>
-      </div>
+      </Wrapper>
     );
   }
 }
@@ -53,4 +57,5 @@ export default StateComponent;
 //оно может  быть как у классовых так и функциональных компонентов
 //state напрямую менять нельзя, только через команду setState
 // команда setState выполняется ассинхронно вызывать лучше изминения через колбекфункцию
-//
+
+//css in js  https://styled-components.com/    npm install --save styled-components
