@@ -15,6 +15,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
     <App />
-    <BigButton>+++</BigButton>
+    {/* смена атрибута 'button' на атрибут ссылку 'a' */}
+    <BigButton as="a">+++</BigButton>
   </StrictMode>
 );
