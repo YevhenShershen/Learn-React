@@ -15,7 +15,7 @@ const EmpItem = styled.div`
   a {
     display: block;
     margin: 10px 0 10px 0;
-    color: ${props=> props.active ? 'orange' : 'black'};
+    color: ${(props) => (props.active ? "orange" : "black")};
   }
   input {
     display: block;
@@ -55,7 +55,7 @@ class StateComponent extends Component {
     const { name, surname, link } = this.props;
     const { position, years } = this.state;
     return (
-      <EmpItem  active>
+      <EmpItem active>
         {/* метод который находится внутри класса - this.nextYear */}
         <Button className="btn btn-primary" onClick={this.nextYear}>
           {this.state.text}

@@ -108,3 +108,4 @@ class App extends Component {
 }
 export default App;
 //render() метод рендер отвечает за вывод чего то на страницу
+
