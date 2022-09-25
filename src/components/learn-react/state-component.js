@@ -1,5 +1,12 @@
 import { Component } from "react";
 import styled from "styled-components";
+
+export const Button = styled.button`
+display:block;
+padding: 5px 15px;
+background-color:gold;
+border: 1px solid rgba(0,0,0, .2);
+box-shadow 5px 5px 10px rgba(0,0,0, .2)`;
 class StateComponent extends Component {
   constructor(props) {
     //что бы использовать пропсы в нашем стеите мы вызываем в super пропсы
@@ -29,26 +36,32 @@ class StateComponent extends Component {
   render() {
     const { name, surname, link } = this.props;
     const { position, years } = this.state;
-    const Wrapper = styled.div`
-      width: 600px;
-      margin: 80px auto 0 auto;
+    const EmpItem = styled.div`
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     `;
+    const Header = styled.h2`
+      font-size: 22px;
+    `;
+
     return (
-      <Wrapper>
+      <EmpItem>
         {/* метод который находится внутри класса - this.nextYear */}
-        <button className="btn btn-primary" onClick={this.nextYear}>
+        <Button className="btn btn-primary" onClick={this.nextYear}>
           {this.state.text}
-        </button>
-        <h1>
+        </Button>
+        <Header>
           My name is {name}, surnmae - {surname}, age - {years}, position -{" "}
           {position}
-        </h1>
+        </Header>
         <a href={link}>My profile</a>
         <form>
           <span>Введи должность</span>
           <input type="text" onChange={this.commitInputChanges} />
         </form>
-      </Wrapper>
+      </EmpItem>
     );
   }
 }
