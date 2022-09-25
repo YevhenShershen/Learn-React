@@ -1,12 +1,30 @@
 import { Component } from "react";
 import styled from "styled-components";
-
+//create styled-components
 export const Button = styled.button`
 display:block;
 padding: 5px 15px;
 background-color:gold;
 border: 1px solid rgba(0,0,0, .2);
 box-shadow 5px 5px 10px rgba(0,0,0, .2)`;
+const EmpItem = styled.div`
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  a {
+    display: block;
+    margin: 10px 0 10px 0;
+    color: black;
+  }
+  input {
+    display: block;
+    margin-top: 10px;
+  }
+`;
+const Header = styled.h2`
+  font-size: 22px;
+`;
 class StateComponent extends Component {
   constructor(props) {
     //что бы использовать пропсы в нашем стеите мы вызываем в super пропсы
@@ -36,16 +54,6 @@ class StateComponent extends Component {
   render() {
     const { name, surname, link } = this.props;
     const { position, years } = this.state;
-    const EmpItem = styled.div`
-      padding: 20px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-    `;
-    const Header = styled.h2`
-      font-size: 22px;
-    `;
-
     return (
       <EmpItem>
         {/* метод который находится внутри класса - this.nextYear */}
