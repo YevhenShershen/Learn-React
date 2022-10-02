@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 //create styled-components
 export const Button = styled.button`
@@ -26,11 +26,14 @@ const Header = styled.h2`
   font-size: 22px;
 `;
 const DynamicGreating = (props) => {
-  return (
-    <div className={"mb-3 p-3 border border-" + props.color}>
- {props.children}
-    </div>
-  );
+  return <div className={"mb-3 p-3 border border-" + props.color}>{
+    // 2)модифицируем наши пустые элементы добовляя им классы
+    React.Children.map(props.children, child =>{
+      return React.cloneElement(
+        child, {className: 'shadow p-p3 m-3 border rounded'}
+      )
+    })
+  }</div>;
 };
 class StateComponent extends Component {
   constructor(props) {
@@ -76,6 +79,7 @@ class StateComponent extends Component {
           <span>Введи должность</span>
           <input type="text" onChange={this.commitInputChanges} />
         </form>
+        {/* 1)передача в компонент обсолютно пустых элементов  */}
         <DynamicGreating color={"primary"}>
           <h2>Some text</h2>
           <h2>Hello world</h2>
