@@ -2,14 +2,19 @@ import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 
 class Form extends Component {
-  myRef = React.createRef();
+  //   myRef = React.createRef();
 
   //хук вызывается после render()
   //   componentDidMount() {
   //     this.myRef.current.focus();
   //   }
+  setInputRef = (elem) => {
+    this.myRef = elem;
+  };
   focusFirsTI = () => {
-    this.myRef.current.focus();
+  if(this.myRef){
+    this.myRef.focus();
+  }
   };
   render() {
     return (
@@ -20,7 +25,7 @@ class Form extends Component {
               Email address
             </label>
             <input
-              ref={this.myRef}
+              ref={this.setInputRef}
               type="email"
               className="form-control"
               id="exampleFormControlInput1"
