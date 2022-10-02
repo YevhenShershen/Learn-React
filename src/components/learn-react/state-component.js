@@ -117,7 +117,7 @@ class StateComponent extends Component {
         {/* Рендер Пропсы */}
         {/* 1*)берем компонент Counter и передаем props' render', который внутри себя содержал callback функцию */}
         {/* эта функция принимает в себя какой то аргумент и возвращает другой компонет "Message"*/}
-        <Counter render={counter =>(<Message counter={counter} />)} />
+        <Counter render={(counter) => <Message counter={counter} />} />
         <HelloGreating />
         {/* метод который находится внутри класса - this.nextYear */}
         <Button className="btn btn-primary" onClick={this.nextYear}>

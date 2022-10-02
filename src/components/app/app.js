@@ -5,6 +5,7 @@ import AppFilter from "../app-filter/app-filter";
 import Employerslist from "../employers-list/employers-list";
 import Employersaddform from "../employers-add-form/employers-add-form";
 import StateComponent from "../learn-react/state-component";
+import Form from "../learn-react/Form";
 import "./app.css";
 class App extends Component {
   constructor(props) {
@@ -89,6 +90,7 @@ class App extends Component {
     const visibleDate = this.filterPost(this.searchEmp(data, term), filter);
     return (
       <div className="app">
+
         <AppInfo employees={employees} increased={increased} />
         <div className="search-panel">
           <SearchPanel onUpdateSerach={this.onUpdateSerach} />
@@ -100,6 +102,7 @@ class App extends Component {
           onToggleProp={this.onToggleProp}
         />
         <Employersaddform onAdd={this.addItem} />
+        <Form/>
         <StateComponent name="Olex" surname="Kewals" link="Google" />
         <StateComponent name="Olex2" surname="Kewals2" link="Google2" />
       </div>
