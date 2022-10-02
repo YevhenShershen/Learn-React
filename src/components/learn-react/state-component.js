@@ -40,6 +40,18 @@ const DynamicGreating = (props) => {
     </div>
   );
 };
+//делаем спецефичный компонент на базе друго компонента
+//использование композиции
+const HelloGreating = () => {
+  return (
+    <div style={{ width: "600px", margin: "0 auto" }}>
+      <DynamicGreating color={"primary"}>
+        <h2>Some text</h2>
+        <h2>Hello world</h2>
+      </DynamicGreating>
+    </div>
+  );
+};
 class StateComponent extends Component {
   constructor(props) {
     //что бы использовать пропсы в нашем стеите мы вызываем в super пропсы
@@ -71,6 +83,7 @@ class StateComponent extends Component {
     const { position, years } = this.state;
     return (
       <EmpItem active>
+        <HelloGreating/>
         {/* метод который находится внутри класса - this.nextYear */}
         <Button className="btn btn-primary" onClick={this.nextYear}>
           {this.state.text}
