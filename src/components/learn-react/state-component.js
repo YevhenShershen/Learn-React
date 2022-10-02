@@ -52,6 +52,37 @@ const HelloGreating = () => {
     </div>
   );
 };
+//ЗАДАЧА: СДЕЛАТЬ ТАК ЧТО БЫ ДВА ОТДЕЛЬНЫХ КОМПОНЕНТА НЕ ЗАВИСИЛИ ДРУГ ОТ ДРУГА И МЫ НЕ ТЕРЯЛИ ИХ ГИБКОСТИ,ИХ СПЕЦЕФИЧНОСТИ
+//Задача2: связать эти два компонента(Message Counter) и что бы один работал внутри другого
+//РЕШЕНИЕ:приминяем render props!
+const Message = (props) => {
+  //4*)и наш пропс 'counter' уже выводится в компоненте Message и рендерится на страницу
+  return <h2>The counter is {props.counter}</h2>;
+};
+//компонет
+//2*)передали эту функцию и зашли во внутрь компонента Counter
+class Counter extends Component {
+  state = {
+    counter: 0,
+  };
+  changeCounter = () => {
+    this.setState(({ counter }) => ({
+      counter: counter + 1,
+    }));
+  };
+  render() {
+    return (
+      <>
+        <button className={"btn btn-primary"} onClick={this.changeCounter}>
+          Click me
+        </button>
+        {/* 3*)в нужном нам месте вызвали эту функцию, при этом что бы связать наше состояние мы передали аргумент this.state.counter*/}
+        {/* 3*)который и передается в  {counter =>(<Message counter={counter} />)} */}
+        {this.props.render(this.state.counter)}
+      </>
+    );
+  }
+}
 class StateComponent extends Component {
   constructor(props) {
     //что бы использовать пропсы в нашем стеите мы вызываем в super пропсы
@@ -83,7 +114,11 @@ class StateComponent extends Component {
     const { position, years } = this.state;
     return (
       <EmpItem active>
-        <HelloGreating/>
+        {/* Рендер Пропсы */}
+        {/* 1*)берем компонент Counter и передаем props' render', который внутри себя содержал callback функцию */}
+        {/* эта функция принимает в себя какой то аргумент и возвращает другой компонет "Message"*/}
+        <Counter render={counter =>(<Message counter={counter} />)} />
+        <HelloGreating />
         {/* метод который находится внутри класса - this.nextYear */}
         <Button className="btn btn-primary" onClick={this.nextYear}>
           {this.state.text}
