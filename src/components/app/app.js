@@ -19,7 +19,7 @@ class App extends Component {
       filter: "rise",
     };
     this.maxId = 4;
-   }
+  }
   deleteItem = (id) => {
     this.setState(({ data }) => {
       // const index = data.findIndex((elem) => elem.id === id);
@@ -108,4 +108,3 @@ class App extends Component {
 }
 export default App;
 //render() метод рендер отвечает за вывод чего то на страницу
-
