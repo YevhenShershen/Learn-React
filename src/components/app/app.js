@@ -19,7 +19,7 @@ class App extends Component {
       filter: "rise",
     };
     this.maxId = 4;
-  }
+   }
   deleteItem = (id) => {
     this.setState(({ data }) => {
       // const index = data.findIndex((elem) => elem.id === id);

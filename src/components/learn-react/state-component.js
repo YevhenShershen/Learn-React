@@ -25,6 +25,13 @@ const EmpItem = styled.div`
 const Header = styled.h2`
   font-size: 22px;
 `;
+const DynamicGreating = (props) => {
+  return (
+    <div className={"mb-3 p-3 border border-" + props.color}>
+ {props.children}
+    </div>
+  );
+};
 class StateComponent extends Component {
   constructor(props) {
     //что бы использовать пропсы в нашем стеите мы вызываем в super пропсы
@@ -69,6 +76,10 @@ class StateComponent extends Component {
           <span>Введи должность</span>
           <input type="text" onChange={this.commitInputChanges} />
         </form>
+        <DynamicGreating color={"primary"}>
+          <h2>Some text</h2>
+          <h2>Hello world</h2>
+        </DynamicGreating>
       </EmpItem>
     );
   }
