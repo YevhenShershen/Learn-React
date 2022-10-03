@@ -1,12 +1,23 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
-import ReactDOM from "react-dom/client";
 import PortalReactDOM from "react-dom";
 class Portals extends Component {
+  state = {
+    advOpen: false,
+  };
+  componentDidMount(){
+    setTimeout(this.handleClick, 3000)
+  }
+  handleClick = () => {
+    this.setState(({ advOpen }) => ({
+      advOpen: !advOpen,
+    }));
+  };
   render() {
     return (
       <Container>
         <form
+          onClick={this.handleClick}
           className="w-50 border mt-5 p-3 m-auto"
           style={{ overflow: "hidden", position: "relative" }}
         >
@@ -31,9 +42,11 @@ class Portals extends Component {
               rows="3"
             ></textarea>
           </div>
-          <Portal>
-            <Msg />
-          </Portal>
+          {this.state.advOpen ? (
+            <Portal>
+              <Msg />
+            </Portal>
+          ) : null}
         </form>
       </Container>
     );
